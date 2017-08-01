@@ -4,12 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
     if params[:name].nil? || params[:name].empty?
       redirect_to login_path
     else
+      session[:name] = params[:name]
       redirect_to secret_path
     end
+  end
+
+  def destroy
+    if session[:name].nil?
+    else
+      session.clear
+    end
+    redirect_to login_path
   end
 
 end

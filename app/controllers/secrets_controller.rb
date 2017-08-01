@@ -10,7 +10,7 @@ class SecretsController < ApplicationController
 
   private
 
-  def valid_user
+  def valid_user?
     unless current_user && current_user
       redirect_to login_path
     end
