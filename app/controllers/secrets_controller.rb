@@ -1,5 +1,5 @@
 class SecretsController < ApplicationController
-  before_action :logged_in?, only: [:show]
+  before_action :valid_user?, only: [:show]
 
 
   def show
@@ -10,8 +10,8 @@ class SecretsController < ApplicationController
 
   private
 
-  def logged_in?
-    unless current_user
+  def valid_user
+    unless current_user && current_user
       redirect_to login_path
     end
   end
